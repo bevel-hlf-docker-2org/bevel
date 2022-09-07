@@ -13,6 +13,14 @@
   gather_facts: no
   no_log: "{{ no_ansible_log | default(false) }}"
   tasks:
+  - name: k8s upgrade
+    shell: |
+      pip3 install --upgrade kubernetes
+      
+  - name: GKE login
+    shell: |
+      /home/bevel/build/google-cloud-sdk/bin/gcloud auth activate-service-account ansible-blockchain@ourglass-319223.iam.gserviceaccount.com --key-file=/home/bevel/build/ourglass-319223-14ab34b7f34d.json --project=ourglass-319223
+
   - name: Copy test env files to build directory
     copy:
       src: "{{ item }}"
