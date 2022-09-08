@@ -237,6 +237,9 @@ spec:
 
               if [ -e /certcheck/absent_creds.txt ]
               then
+                KUBE_SA_TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+                VAULT_TOKEN=$(curl -sS --request POST ${VAULT_ADDR}/v1/auth/${KUBERNETES_AUTH_PATH}/login -H "Content-Type: application/json" -d '{"role":"'"${VAULT_APP_ROLE}"'","jwt":"'"${KUBE_SA_TOKEN}"'"}' | jq -r 'if .errors then . else .auth.client_token end')
+                validateVaultResponse 'vault login token' "${VAULT_TOKEN}"
 
                 vault_secret_key="${VAULT_SECRET_CREDENTIALS_PATH}"
 
