@@ -22,7 +22,8 @@
   retries: "{{ network.env.retry_count}}"
   delay: 30
   until: component_data.resources|length > 0
-  when: component_type == "Job" and component_name != "ourglass-cacerts-job"
+  when: component_type == "Job"
+  # when: component_type == "Job" and component_name != "ourglass-cacerts-job"
 
 # one time job check and registers the result variable
 - name: 'Check for {{ job_title }} job on {{ component_name }}'
