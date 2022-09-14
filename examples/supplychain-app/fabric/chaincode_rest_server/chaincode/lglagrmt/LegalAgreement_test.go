@@ -1,4 +1,4 @@
-package ourglass
+package lglagrmt
 
 import (
 	"encoding/json"
@@ -67,7 +67,7 @@ func TestLegalAgreement(t *testing.T) {
 
 				// Run Create Legal Agreement transaction
 				args := [][]byte{[]byte("createLegalAgreement"), byteValue}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				// Retrieve results
 				var results map[string]interface{}
@@ -85,7 +85,7 @@ func TestLegalAgreement(t *testing.T) {
 
 				// Run Create Legal Agreement transaction
 				args := [][]byte{[]byte("createLegalAgreement"), byteValue}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				Expect(response.Status).To(BeEquivalentTo(200))
 
@@ -107,7 +107,7 @@ func TestLegalAgreement(t *testing.T) {
 			g.It("should return an error if < 1 argument", func() {
 				// Run Create Legal Agreement transaction
 				args := [][]byte{[]byte("createLegalAgreement")}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				Expect(response.Status).To(BeEquivalentTo(500))
 				Expect(response.Message).To(Equal("Incorrect number of arguments. Expecting 1"))
@@ -116,7 +116,7 @@ func TestLegalAgreement(t *testing.T) {
 			g.It("should return an error if > 1 argument", func() {
 				// Run Create Legal Agreement transaction
 				args := [][]byte{[]byte("createLegalAgreement"), []byte(""), []byte("")}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				Expect(response.Status).To(BeEquivalentTo(500))
 				Expect(response.Message).To(Equal("Incorrect number of arguments. Expecting 1"))
@@ -134,12 +134,12 @@ func TestLegalAgreement(t *testing.T) {
 
 				// Run Create Legal Agreement transaction
 				args1 := [][]byte{[]byte("createLegalAgreement"), byteValue1}
-				response1 := mockStub.MockInvoke("ourglass", args1)
+				response1 := mockStub.MockInvoke("legalagreement", args1)
 
 				// Run Create Legal Agreement transaction with different ID
 				byteValue2, _ := json.Marshal(input2)
 				args2 := [][]byte{[]byte("createLegalAgreement"), string(byteValue2)}
-				response2 := mockStub.MockInvoke("ourglass", args2)
+				response2 := mockStub.MockInvoke("legalagreement", args2)
 
 				// Retrieve results
 				var results1 map[string]interface{}
@@ -179,7 +179,7 @@ func TestLegalAgreement(t *testing.T) {
 
 				// Run Read Legal Agreement transaction
 				args := [][]byte{[]byte("readLegalAgreement"), []byte("001")}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				// Retrieve results
 				var result LegalAgreement
@@ -197,7 +197,7 @@ func TestLegalAgreement(t *testing.T) {
 			g.It("should return an error if < 1 argument", func() {
 				// Run Read Legal Agreement transaction
 				args := [][]byte{[]byte("readLegalAgreement")}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				Expect(response.Status).To(BeEquivalentTo(500))
 				Expect(response.Message).To(Equal("Incorrect number of arguments. Expecting 1"))
@@ -206,7 +206,7 @@ func TestLegalAgreement(t *testing.T) {
 			g.It("should return an error if > 1 argument", func() {
 				// Run Read Legal Agreement transaction
 				args := [][]byte{[]byte("readLegalAgreement"), []byte(""), []byte("")}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				Expect(response.Status).To(BeEquivalentTo(500))
 				Expect(response.Message).To(Equal("Incorrect number of arguments. Expecting 1"))
@@ -215,7 +215,7 @@ func TestLegalAgreement(t *testing.T) {
 			g.It("should return 404 if the Legal Agreement doesn't exist", func() {
 				// Run Read Legal Agreement transaction
 				args := [][]byte{[]byte("readLegalAgreement"), []byte("None")}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				Expect(response.Status).To(BeEquivalentTo(404))
 				Expect(response.Message).To(Equal("Legal Agreement None does not exist"))
@@ -256,7 +256,7 @@ func TestLegalAgreement(t *testing.T) {
 
 				// Run Read Legal Agreement transaction
 				args := [][]byte{[]byte("readLatestVersionLegalAgreement")}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				// Retrieve results
 				var result LegalAgreement
@@ -276,7 +276,7 @@ func TestLegalAgreement(t *testing.T) {
 			g.It("should return an error if > 0 argument", func() {
 				// Run Read Latest Version Legal Agreement transaction
 				args := [][]byte{[]byte("readLatestVersionLegalAgreement"), []byte("")}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				Expect(response.Status).To(BeEquivalentTo(500))
 				Expect(response.Message).To(Equal("Incorrect number of arguments. Expecting 0"))

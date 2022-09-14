@@ -1,4 +1,4 @@
-package ourglass
+package lglagrmt
 
 import (
 	"crypto/sha256"

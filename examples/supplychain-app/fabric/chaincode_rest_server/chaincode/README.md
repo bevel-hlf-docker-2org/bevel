@@ -77,41 +77,41 @@ The following command flow assumes you have a Hyperledger Fabric network and hav
 First, create a Legal Agreement.
 
 ```bash
-peer chaincode invoke -n ourglass -c '{"Args":["createLegalAgreement", "{\"ID\":\"001\",\"content\":\"some legal agreement content first version\",\"timestamp\":1653417608,\"version\":1}"]}' -C myc
+peer chaincode invoke -n legalagreement -c '{"Args":["createLegalAgreement", "{\"ID\":\"001\",\"content\":\"some legal agreement content first version\",\"timestamp\":1653417608,\"version\":1}"]}' -C myc
 ```
 
 Then, you can read the information of the Legal Agreement.
 
 ```bash
-peer chaincode invoke -n ourglass -c '{"Args":["readLegalAgreement", "{\"ID\":\"001\"}"]}' -C myc
+peer chaincode invoke -n legalagreement -c '{"Args":["readLegalAgreement", "{\"ID\":\"001\"}"]}' -C myc
 ```
 
 If you want to read the information of the latest version of the Legal Agreement, first you need another Legal Agreement.
 
 ```bash
-peer chaincode invoke -n ourglass -c '{"Args":["createLegalAgreement", "{\"ID\":\"002\",\"content\":\"some legal agreement content second version\",\"timestamp\":1653417708,\"version\":2}"]}' -C myc
+peer chaincode invoke -n legalagreement -c '{"Args":["createLegalAgreement", "{\"ID\":\"002\",\"content\":\"some legal agreement content second version\",\"timestamp\":1653417708,\"version\":2}"]}' -C myc
 ```
 
 Then, you can read the information of the latest version of the Legal Agreement.
 
 ```bash
-peer chaincode invoke -n ourglass -c '{"Args":["readLatestVersionLegalAgreement"]}' -C myc
+peer chaincode invoke -n legalagreement -c '{"Args":["readLatestVersionLegalAgreement"]}' -C myc
 ```
 
 After that, you can create a Legal Agreement Signing.
 
 ```bash
-peer chaincode invoke -n ourglass -c '{"Args":["createLegalAgreementSigning", "{\"ID\":\"0001\",\"userID\":\"001\",\"legalAgreementID\":\"002\",\"legalAgreementContentHash\":\"52af150fcae310d02e368906b05fe33a907d46e3121533675d31931850d4dba5\",\"accepted\":true,\"timestamp\":1653417620}"]}' -C myc
+peer chaincode invoke -n legalagreement -c '{"Args":["createLegalAgreementSigning", "{\"ID\":\"0001\",\"userID\":\"001\",\"legalAgreementID\":\"002\",\"legalAgreementContentHash\":\"52af150fcae310d02e368906b05fe33a907d46e3121533675d31931850d4dba5\",\"accepted\":true,\"timestamp\":1653417620}"]}' -C myc
 ```
 
 Then, you can read the information of the Legal Agreement Signing.
 
 ```bash
-peer chaincode invoke -n ourglass -c '{"Args":["readLegalAgreementSigning", "{\"ID\":\"0001\"}"]}' -C myc
+peer chaincode invoke -n legalagreement -c '{"Args":["readLegalAgreementSigning", "{\"ID\":\"0001\"}"]}' -C myc
 ```
 
 And, you can read the information of the latest Legal Agreement Signing by the given user ID.
 
 ```bash
-peer chaincode invoke -n ourglass -c '{"Args":["readLatestLegalAgreementSigningByUserID", "{\"userID\":\"001\"}"]}' -C myc
+peer chaincode invoke -n legalagreement -c '{"Args":["readLatestLegalAgreementSigningByUserID", "{\"userID\":\"001\"}"]}' -C myc
 ```

@@ -1,4 +1,4 @@
-package ourglass
+package lglagrmt
 
 import (
 	"fmt"
@@ -14,7 +14,7 @@ type SmartContract struct {
 
 // Init is called during chaincode instantiation to initialize any data.
 func (s *SmartContract) Init(stub shim.ChaincodeStubInterface) peer.Response {
-	s.logger = shim.NewLogger("ourglass")
+	s.logger = shim.NewLogger("legalagreement")
 	return shim.Success(nil)
 }
 
@@ -39,6 +39,10 @@ func (s *SmartContract) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
 		return s.readLegalAgreementSigning(stub, args)
 	case "readLatestLegalAgreementSigningByUserID":
 		return s.readLatestLegalAgreementSigningByUserID(stub, args)
+	case "createUserIdentity":
+		return s.createUserIdentity(stub, args)
+	case "readUserIdentity":
+		return s.readUserIdentity(stub, args)
 	default:
 		fmt.Printf("Function for Invoke invalid or missing: %s, %s", function, args)
 		return shim.Error(fmt.Sprintf("Function for Invoke invalid or missing: %s, %s", function, args))

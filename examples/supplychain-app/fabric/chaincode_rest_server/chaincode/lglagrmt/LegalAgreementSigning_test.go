@@ -1,4 +1,4 @@
-package ourglass
+package lglagrmt
 
 import (
 	"encoding/json"
@@ -57,7 +57,7 @@ func TestLegalAgreementSigning(t *testing.T) {
 
 				// Run Create Legal Agreement Signing transaction
 				args := [][]byte{[]byte("createLegalAgreementSigning"), byteValue}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				// Retrieve results
 				var results map[string]interface{}
@@ -75,7 +75,7 @@ func TestLegalAgreementSigning(t *testing.T) {
 
 				// Run Create Legal Agreement Signing transaction
 				args := [][]byte{[]byte("createLegalAgreementSigning"), byteValue}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				Expect(response.Status).To(BeEquivalentTo(200))
 
@@ -100,9 +100,9 @@ func TestLegalAgreementSigning(t *testing.T) {
 
 				// Run Create Legal Agreement Signing transaction
 				args := [][]byte{[]byte("createLegalAgreementSigning"), byteValue}
-				response1 := mockStub.MockInvoke("ourglass", args)
+				response1 := mockStub.MockInvoke("legalagreement", args)
 
-				response2 := mockStub.MockInvoke("ourglass", args)
+				response2 := mockStub.MockInvoke("legalagreement", args)
 
 				// Retrieve results
 				var results map[string]interface{}
@@ -117,7 +117,7 @@ func TestLegalAgreementSigning(t *testing.T) {
 			g.It("should return an error if < 1 argument", func() {
 				// Run Create Product transaction
 				args := [][]byte{[]byte("createLegalAgreementSigning")}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				Expect(response.Status).To(BeEquivalentTo(500))
 				Expect(response.Message).To(Equal("Incorrect number of arguments. Expecting 1"))
@@ -126,7 +126,7 @@ func TestLegalAgreementSigning(t *testing.T) {
 			g.It("should return an error if > 1 argument", func() {
 				// Run Create Product transaction
 				args := [][]byte{[]byte("createLegalAgreementSigning"), []byte(""), []byte("")}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				Expect(response.Status).To(BeEquivalentTo(500))
 				Expect(response.Message).To(Equal("Incorrect number of arguments. Expecting 1"))
@@ -158,7 +158,7 @@ func TestLegalAgreementSigning(t *testing.T) {
 
 				// Run Read Legal Agreement Signing transaction
 				args := [][]byte{[]byte("readLegalAgreementSigning"), []byte("0001")}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				// Retrieve results
 				var result LegalAgreementSigning
@@ -176,7 +176,7 @@ func TestLegalAgreementSigning(t *testing.T) {
 			g.It("should return an error if < 1 argument", func() {
 				// Run Read Legal Agreement Signing transaction
 				args := [][]byte{[]byte("readLegalAgreementSigning")}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				Expect(response.Status).To(BeEquivalentTo(500))
 				Expect(response.Message).To(Equal("Incorrect number of arguments. Expecting 1"))
@@ -185,7 +185,7 @@ func TestLegalAgreementSigning(t *testing.T) {
 			g.It("should return an error if > 1 argument", func() {
 				// Run Read Legal Agreement Signing transaction
 				args := [][]byte{[]byte("readLegalAgreementSigning"), []byte(""), []byte("")}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				Expect(response.Status).To(BeEquivalentTo(500))
 				Expect(response.Message).To(Equal("Incorrect number of arguments. Expecting 1"))
@@ -194,7 +194,7 @@ func TestLegalAgreementSigning(t *testing.T) {
 			g.It("should return 404 if the Legal Agreement Signing doesn't exist", func() {
 				// Run Read Legal Agreement Signing transaction
 				args := [][]byte{[]byte("readLegalAgreementSigning"), []byte("None")}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				Expect(response.Status).To(BeEquivalentTo(404))
 				Expect(response.Message).To(Equal("Legal Agreement Signing None does not exist"))
@@ -237,7 +237,7 @@ func TestLegalAgreementSigning(t *testing.T) {
 
 				// Run Read Latest Legal Agreement Signing By User ID transaction
 				args := [][]byte{[]byte("readLatestLegalAgreementSigningByUserID"), []byte("001")}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				// Retrieve results
 				var result LegalAgreementSigning
@@ -255,7 +255,7 @@ func TestLegalAgreementSigning(t *testing.T) {
 			g.It("should return an error if < 1 argument", func() {
 				// Run Read Latest Legal Agreement Signing By User ID transaction
 				args := [][]byte{[]byte("readLatestLegalAgreementSigningByUserID")}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				Expect(response.Status).To(BeEquivalentTo(500))
 				Expect(response.Message).To(Equal("Incorrect number of arguments. Expecting 1"))
@@ -264,7 +264,7 @@ func TestLegalAgreementSigning(t *testing.T) {
 			g.It("should return an error if > 1 argument", func() {
 				// Run Read Latest Legal Agreement Signing By User ID transaction
 				args := [][]byte{[]byte("readLatestLegalAgreementSigningByUserID"), []byte(""), []byte("")}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				Expect(response.Status).To(BeEquivalentTo(500))
 				Expect(response.Message).To(Equal("Incorrect number of arguments. Expecting 1"))
@@ -273,7 +273,7 @@ func TestLegalAgreementSigning(t *testing.T) {
 			g.It("should return 404 if the Latest Legal Agreement Signing By User ID doesn't exist", func() {
 				// Run Read Latest Legal Agreement Signing By User ID transaction
 				args := [][]byte{[]byte("readLatestLegalAgreementSigningByUserID"), []byte("None")}
-				response := mockStub.MockInvoke("ourglass", args)
+				response := mockStub.MockInvoke("legalagreement", args)
 
 				Expect(response.Status).To(BeEquivalentTo(404))
 				Expect(response.Message).To(Equal("Legal Agreement Signing for user None does not exist"))
